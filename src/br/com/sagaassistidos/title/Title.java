@@ -14,6 +14,12 @@ public class Title implements Comparable<Title> {
         this.releaseYear = releaseYear;
     }
 
+    public Title(TitleConvert myTitleConvert) {
+        this.name = myTitleConvert.title();
+        this.releaseYear = Integer.parseInt(myTitleConvert.year());
+        this.duration = Integer.parseInt(myTitleConvert.runtime().substring(0, 2));
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -39,11 +45,11 @@ public class Title implements Comparable<Title> {
         return this.name;
     }
 
-    public void showTitleDetails() {
-        System.out.println("Nome do filme: " + name);
-        System.out.println("Nota: " + reviewsScore());
-        System.out.println("Ano de lançamento: " + releaseYear);
-        System.out.println("Duração: " + duration);
+    public String showTitleDetails() {
+        return "Nome do filme: " + name +
+                ", Ano de lançamento: " + releaseYear +
+                " Duração: " + duration + " min";
+
     }
 
     public void reviewMovie () {
